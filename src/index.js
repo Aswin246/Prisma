@@ -24,7 +24,6 @@ function createUser(username, password, firstName, lastName) {
         console.log(res);
     });
 }
-createUser("aswin23@gmail.com", "123", "Aswin", "M");
 function updateUser(username, { firstName, lastName }) {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield prisma.user.update({
@@ -39,10 +38,10 @@ function updateUser(username, { firstName, lastName }) {
         console.log(res);
     });
 }
-updateUser("aswin23@gmail.com", {
-    firstName: "Aswiin",
-    lastName: "MMMM",
-});
+// updateUser("aswin23@gmail.com", {
+//   firstName: "Aswiin",
+//   lastName: "MMMM",
+// });
 function getUser(username) {
     return __awaiter(this, void 0, void 0, function* () {
         const res = yield prisma.user.findFirst({
@@ -53,4 +52,33 @@ function getUser(username) {
         console.log(res);
     });
 }
-getUser("aswin23@gmail.com");
+//getUser("aswin23@gmail.com");
+function createTodo(userId, title, description) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const res = yield prisma.todo.create({
+            data: {
+                userId,
+                title,
+                description,
+            },
+        });
+        console.log(res);
+    });
+}
+//createTodo(1, "Go GYM", "WE GO JIM");
+function getTodos(userId) {
+    return __awaiter(this, void 0, void 0, function* () {
+        try {
+            const res = yield prisma.todo.findFirst({
+                where: {
+                    userId: userId,
+                },
+            });
+            console.log(res);
+        }
+        catch (err) {
+            console.log(err);
+        }
+    });
+}
+getTodos(2);

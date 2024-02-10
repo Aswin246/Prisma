@@ -25,3 +25,4 @@ model Todo {
   done        Boolean @default(false)
   userId      Int
 }
+

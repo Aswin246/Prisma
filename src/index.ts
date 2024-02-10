@@ -18,7 +18,7 @@ async function createUser(
   });
   console.log(res);
 }
-createUser("aswin23@gmail.com", "123", "Aswin", "M");
+//createUser("aswin23@gmail.com", "123", "Aswin", "M");
 
 interface updateParams {
   firstName: string;
@@ -41,10 +41,10 @@ async function updateUser(
   console.log(res);
 }
 
-updateUser("aswin23@gmail.com", {
-  firstName: "Aswiin",
-  lastName: "MMMM",
-});
+// updateUser("aswin23@gmail.com", {
+//   firstName: "Aswiin",
+//   lastName: "MMMM",
+// });
 
 async function getUser(username: string) {
   const res = await prisma.user.findFirst({
@@ -55,4 +55,32 @@ async function getUser(username: string) {
   console.log(res);
 }
 
-getUser("aswin23@gmail.com");
+//getUser("aswin23@gmail.com");
+
+async function createTodo(userId: number, title: string, description: string) {
+  const res = await prisma.todo.create({
+    data: {
+      userId,
+      title,
+      description,
+    },
+  });
+  console.log(res);
+}
+
+//createTodo(1, "Go GYM", "WE GO JIM");
+
+async function getTodos(userId: number) {
+  try {
+    const res = await prisma.todo.findFirst({
+      where: {
+        userId: userId,
+      },
+    });
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+}
+
+getTodos(2);
