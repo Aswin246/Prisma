@@ -55,7 +55,7 @@ async function getUser(username: string) {
   console.log(res);
 }
 
-//getUser("aswin23@gmail.com");
+//getUser("aswin234@gmail.com");
 
 async function createTodo(userId: number, title: string, description: string) {
   const res = await prisma.todo.create({
